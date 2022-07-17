@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { BreakpointsType } from '../types/common/BreakpointsType';
+import { BreakpointsType } from '../types/common';
 
 export const ContentContainer = styled.div`
   width: 600px;

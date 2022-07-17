@@ -29,7 +29,7 @@ type PropsType = {
 
 export const Button: React.FC<PropsType> = ({ text, onClick, style }) => {
   return (
-    <ButtonContainer onClick={onClick} style={style} type="submit">
+    <ButtonContainer onClick={onClick} style={style} type="submit" data-testid="button">
       <ButtonText>{text}</ButtonText>
     </ButtonContainer>
   );

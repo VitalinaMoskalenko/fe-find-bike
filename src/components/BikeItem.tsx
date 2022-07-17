@@ -35,7 +35,7 @@ export const BikeItem: React.FC<PropsType> = ({ title, isStolen, frameColor, fra
   const { t } = useTranslation();
 
   return (
-    <Container onClick={onClick}>
+    <Container onClick={onClick} data-testid="BikeItem">
       <H4>{title}</H4>
       {isStolen && <Stolen>{t('Common.stolen')}</Stolen>}
       <KeyData dataKey={t('Common.frameModel')} value={frameModel} />

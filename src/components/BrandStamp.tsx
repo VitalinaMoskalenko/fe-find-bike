@@ -22,14 +22,12 @@ const BrandText = styled(H1)`
   color: ${({ theme }) => theme.colors.primary};
 `;
 
-const baseTranslationPath = 'Common.';
-
 export const BrandStamp = () => {
   const { t } = useTranslation();
 
   return (
     <Container>
-      <BrandText>{t(`${baseTranslationPath}findBike`)}</BrandText>
+      <BrandText>{t('Common.findBike')}</BrandText>
       <BicycleImage src={bicycleImage} />
     </Container>
   );

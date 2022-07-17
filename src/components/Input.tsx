@@ -68,6 +68,7 @@ export const Input: React.FC<PropsType> = ({ onChangeText, placeholder, value, e
   return (
     <Container>
       <InputField
+        data-testid="inputField"
         onChange={onChange}
         placeholder={placeholder}
         value={value}

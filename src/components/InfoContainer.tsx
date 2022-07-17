@@ -8,7 +8,6 @@ const Container = styled.div`
   border: ${({ theme }) => `1px solid ${theme.colors.primary}`};
   padding: 16px;
   border-radius: 8px;
-  width: 100%;
 `;
 
 type PropsType = {

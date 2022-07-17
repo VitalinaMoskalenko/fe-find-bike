@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const BicycleImage = styled.img`
   width: 200px;
-  height: 100px;
+  height: 120px;
 `;
 
 const BrandText = styled(H1)`

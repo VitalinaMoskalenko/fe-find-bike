@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { bicycleImage } from '../assets';
-import { ContentContainer, H1, InfoContainer, KeyData, LoaderWrapper } from '../components';
+import { ContentContainer, H2, InfoContainer, KeyData, LoaderWrapper } from '../components';
 import { getBikeDetailsService } from '../services/bikes';
 
 const Container = styled.div`
@@ -33,7 +33,7 @@ const BikeImage = styled.img`
   margin: 16px 0px;
 `;
 
-const BikeName = styled(H1)`
+const BikeName = styled(H2)`
   color: ${({ theme }) => theme.colors.primary};
 `;
 

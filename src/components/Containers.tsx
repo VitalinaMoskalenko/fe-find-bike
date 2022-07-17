@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
-import { BreakpointsType } from '../types/common';
-
 export const ContentContainer = styled.div`
-  width: 600px;
-
-  @media (max-width: ${BreakpointsType.xs}px) {
-    width: 100%;
-  }
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  max-width: 600px;
 `;

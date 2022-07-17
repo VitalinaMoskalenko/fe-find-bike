@@ -15,7 +15,6 @@ const Container = styled.div`
   margin-bottom: 8px;
   border-radius: 8px;
   padding: 8px;
-  width: 100%;
 
   :hover {
     border: ${({ theme }) => `1px solid ${theme.colors.primary08}`};

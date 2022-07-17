@@ -1,0 +1,23 @@
+export type Bike = {
+  date_stolen: string;
+  description: string;
+  frame_colors: string[];
+  frame_model: string;
+  id: number;
+  is_stock_img: boolean;
+  large_img: string;
+  location_found: string;
+  manufacturer_name: string;
+  external_id: string;
+  registry_name: string;
+  registry_url: string;
+  serial: string;
+  status: string;
+  stolen: boolean;
+  stolen_coordinates: number[];
+  stolen_location: string;
+  thumb: string;
+  title: string;
+  url: string;
+  year: number;
+};

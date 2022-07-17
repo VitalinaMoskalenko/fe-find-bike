@@ -6,6 +6,7 @@ export const theme = {
     error: 'red',
     primary: 'rgba(3, 169, 224, 1)',
     primary08: 'rgba(3, 169, 224, 0.8)',
+    primary02: 'rgba(3, 169, 224, 0.2)',
   },
   fonts: {
     size: {

@@ -5,7 +5,7 @@ export type Bike = {
   frame_model: string;
   id: number;
   is_stock_img: boolean;
-  large_img: string;
+  large_img: string | null;
   location_found: string;
   manufacturer_name: string;
   external_id: string;

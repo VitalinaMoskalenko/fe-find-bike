@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
 
-import { BrandStamp, Button, CommonErrorMessage, Input, ContentContainer } from '../components';
-import { useFormikErrorMessage, bikeSearchValidatorScheme } from '../lib';
-import { searchBikesService } from '../services/bikes';
-import { Bike } from '../types/models/Bike';
+import { BrandStamp, Button, CommonErrorMessage, Input, ContentContainer, Loader } from '../../components';
+import { useFormikErrorMessage, bikeSearchValidatorScheme } from '../../lib';
+import { searchBikesService } from '../../services/bikes';
+import { BikeList } from './components/BikeList';
 
 const Container = styled.div`
   display: flex;
@@ -20,7 +20,14 @@ const Container = styled.div`
 const BikeSearchContainer = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const BikeListContainer = styled.div`
+  display: flex;
+  justify-content: center;
   align-items: center;
+  margin-top: 8px;
+  width: 100%;
 `;
 
 const SearchButton = styled(Button).attrs(() => {
@@ -55,12 +62,8 @@ export const HomePage = () => {
   });
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [bikeList, setBikeList] = useState<Bike[] | null>(null);
 
-  const { refetch } = useQuery('bikes', () => searchBikesService(values.city), {
-    onSuccess: (response) => {
-      setBikeList(response.bikes);
-    },
+  const { refetch, isFetching, data } = useQuery('bikes', () => searchBikesService(values.city), {
     onError: () => {
       setErrorMessage(t('Common.somethingWentWrong'));
     },
@@ -80,7 +83,15 @@ export const HomePage = () => {
           />
           <SearchButton text={t(`${baseTranslationPath}search`)} onClick={handleSubmit} />
         </BikeSearchContainer>
-        {errorMessage && <CommonErrorMessage text={errorMessage} />}
+        <BikeListContainer>
+          {errorMessage ? (
+            <CommonErrorMessage text={errorMessage} />
+          ) : (
+            <BikeListContainer>
+              {isFetching ? <Loader /> : <BikeList bikes={data?.bikes} />}
+            </BikeListContainer>
+          )}
+        </BikeListContainer>
       </ContentContainer>
     </Container>
   );

@@ -18,6 +18,7 @@ const H3 = styled.h3`
 const H4 = styled.h4`
   font-size: ${({ theme }) => theme.fonts.size.h4}px;
   color: ${({ theme }) => theme.colors.black};
+  margin: 0;
 `;
 
 const H5 = styled.h5`

@@ -74,7 +74,7 @@ export const Input: React.FC<PropsType> = ({ onChangeText, placeholder, value, e
         inputStatus={inputStatus}
         onBlur={onBlur}
       />
-      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+      <ErrorMessage>{errorMessage}</ErrorMessage>
     </Container>
   );
 };

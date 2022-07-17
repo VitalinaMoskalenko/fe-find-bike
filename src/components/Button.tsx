@@ -9,7 +9,7 @@ const ButtonContainer = styled.button`
   border: none;
   border-radius: 8px;
   min-width: 100px;
-  height: 50px;
+  height: 52px;
 
   :hover {
     background-color: ${({ theme }) => theme.colors.primary08};

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const H1 = styled.h1`
   font-size: ${({ theme }) => theme.fonts.size.h1}px;
   color: ${({ theme }) => theme.colors.black};
+  margin: 0px;
 `;
 
 const H2 = styled.h2`
@@ -13,6 +14,7 @@ const H2 = styled.h2`
 const H3 = styled.h3`
   font-size: ${({ theme }) => theme.fonts.size.h3}px;
   color: ${({ theme }) => theme.colors.black};
+  margin: 0;
 `;
 
 const H4 = styled.h4`

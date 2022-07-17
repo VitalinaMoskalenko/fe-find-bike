@@ -1,5 +1,5 @@
 export type Bike = {
-  date_stolen: string;
+  date_stolen: number;
   description: string;
   frame_colors: string[];
   frame_model: string;
@@ -19,5 +19,5 @@ export type Bike = {
   thumb: string;
   title: string;
   url: string;
-  year: number;
+  year?: number;
 };

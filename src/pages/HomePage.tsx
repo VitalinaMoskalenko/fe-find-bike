@@ -3,12 +3,20 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { BrandStamp, Button, CommonErrorMessage, Input, ContentContainer, Loader } from '../../components';
-import { useFormikErrorMessage, bikeSearchValidatorScheme } from '../../lib';
-import { searchBikesService } from '../../services/bikes';
-import { BikeList } from './components/BikeList';
+import {
+  BrandStamp,
+  Button,
+  CommonErrorMessage,
+  Input,
+  ContentContainer,
+  BikeItem,
+  LoaderWrapper,
+} from '../components';
+import { useFormikErrorMessage, bikeSearchValidatorScheme } from '../lib';
+import { searchBikesService } from '../services/bikes';
 
 const Container = styled.div`
   display: flex;
@@ -24,6 +32,7 @@ const BikeSearchContainer = styled.div`
 
 const BikeListContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 8px;
@@ -38,14 +47,13 @@ const SearchButton = styled(Button).attrs(() => {
   };
 })``;
 
-const baseTranslationPath = 'HomePage.';
-
 type FormFields = {
   city: string;
 };
 
 export const HomePage = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { getErrorMessage } = useFormikErrorMessage();
   const { values, handleChange, errors, handleSubmit } = useFormik<FormFields>({
     initialValues: {
@@ -70,6 +78,10 @@ export const HomePage = () => {
     enabled: false,
   });
 
+  const navigateToBikeDetails = (bikeId: number) => {
+    navigate(`/bike/${bikeId}`);
+  };
+
   return (
     <Container>
       <ContentContainer>
@@ -77,19 +89,32 @@ export const HomePage = () => {
         <BikeSearchContainer>
           <Input
             onChangeText={handleChange('city')}
-            placeholder={t(`${baseTranslationPath}enterCity`)}
+            placeholder={t('HomePage.enterCity')}
             value={values.city}
             errorMessage={getErrorMessage(errors.city)}
           />
-          <SearchButton text={t(`${baseTranslationPath}search`)} onClick={handleSubmit} />
+          <SearchButton text={t('HomePage.search')} onClick={handleSubmit} />
         </BikeSearchContainer>
         <BikeListContainer>
           {errorMessage ? (
             <CommonErrorMessage text={errorMessage} />
           ) : (
-            <BikeListContainer>
-              {isFetching ? <Loader /> : <BikeList bikes={data?.bikes} />}
-            </BikeListContainer>
+            <LoaderWrapper isLoading={isFetching}>
+              <BikeListContainer>
+                {data?.bikes.map((item) => {
+                  return (
+                    <BikeItem
+                      key={item.id}
+                      onClick={() => navigateToBikeDetails(item.id)}
+                      title={item.title}
+                      frameColor={item.frame_colors.join(', ')}
+                      frameModel={item.frame_model}
+                      isStolen={item.stolen}
+                    />
+                  );
+                })}
+              </BikeListContainer>
+            </LoaderWrapper>
           )}
         </BikeListContainer>
       </ContentContainer>

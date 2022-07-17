@@ -8,7 +8,7 @@ export const RootRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="bike" element={<BikeDetails />} />
+      <Route path="bike/:id" element={<BikeDetails />} />
     </Routes>
   );
 };

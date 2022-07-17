@@ -7,3 +7,6 @@ export * from './CommonErrorMessage';
 export * from './Containers';
 export * from './Loader';
 export * from './KeyData';
+export * from './BikeItem';
+export * from './InfoContainer';
+export * from './LoaderWrapper';

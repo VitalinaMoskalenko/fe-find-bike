@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
-import { BodyText, H4, KeyData } from '../../../components';
+import { BodyText, H4, KeyData } from './';
 
 const Stolen = styled(BodyText)`
   font-weight: bold;
@@ -15,6 +15,7 @@ const Container = styled.div`
   margin-bottom: 8px;
   border-radius: 8px;
   padding: 8px;
+  width: 100%;
 
   :hover {
     border: ${({ theme }) => `1px solid ${theme.colors.primary08}`};
@@ -28,16 +29,17 @@ type PropsType = {
   frameColor: string;
   frameModel: string;
   isStolen: boolean;
+  onClick?: () => void;
 };
-export const BikeItem: React.FC<PropsType> = ({ title, isStolen, frameColor, frameModel }) => {
+export const BikeItem: React.FC<PropsType> = ({ title, isStolen, frameColor, frameModel, onClick }) => {
   const { t } = useTranslation();
 
   return (
-    <Container>
+    <Container onClick={onClick}>
       <H4>{title}</H4>
-      {isStolen && <Stolen>{t('HomePage.stolen')}</Stolen>}
-      <KeyData dataKey={t('HomePage.frameModel')} value={frameModel} />
-      <KeyData dataKey={t('HomePage.frameColors')} value={frameColor} />
+      {isStolen && <Stolen>{t('Common.stolen')}</Stolen>}
+      <KeyData dataKey={t('Common.frameModel')} value={frameModel} />
+      <KeyData dataKey={t('Common.frameColors')} value={frameColor} />
     </Container>
   );
 };

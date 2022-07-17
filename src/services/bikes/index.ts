@@ -1,6 +1,6 @@
-import { SearchBikesResponse } from '../../types/api/SearchBikesResponse';
+import { SearchBikesResponse, BikeDetailsResponse } from '../../types/api';
 import { quickFetch } from '../quickFetch';
-import { searchBikesEndpoint } from './endpoints';
+import { getBikeDetailsEndpoint, searchBikesEndpoint } from './endpoints';
 
 export const searchBikesService = (location: string) =>
   quickFetch<SearchBikesResponse>('GET', searchBikesEndpoint, {
@@ -12,3 +12,6 @@ export const searchBikesService = (location: string) =>
       stolenness: 'all',
     },
   });
+
+export const getBikeDetailsService = (bikeId: string) =>
+  quickFetch<BikeDetailsResponse>('GET', getBikeDetailsEndpoint(bikeId));

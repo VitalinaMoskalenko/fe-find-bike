@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
+import { useQuery } from '@tanstack/react-query';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -69,7 +69,7 @@ export const HomePage = () => {
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const { refetch, isFetching, data } = useQuery('bikes', () => searchBikesService(values.city), {
+  const { refetch, isFetching, data } = useQuery(['bikes'], () => searchBikesService(values.city), {
     onError: () => {
       setErrorMessage(t('Common.somethingWentWrong'));
     },

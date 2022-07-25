@@ -1,8 +1,8 @@
 import React from 'react';
 
+import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
-import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -47,7 +47,7 @@ export const BikeDetails = () => {
   const { id } = useParams();
   const { t } = useTranslation();
 
-  const { data, isFetching } = useQuery('bikeDetails', () => getBikeDetailsService(id || ''));
+  const { data, isFetching } = useQuery(['bikeDetails'], () => getBikeDetailsService(id || ''));
 
   return (
     <Container>
